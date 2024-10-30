@@ -1,0 +1,81 @@
+spring:
+    application:
+        name: project_name
+
+    datasource:
+        url: ${DB_URL}
+        username: ${DB_USER}
+        password: ${DB_PASSWORD}
+        driver-class-name: org.postgresql.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                format_sql: true
+        database:
+            postgresql
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+    redis:
+        data:
+            host: localhost
+            port: 6379
+
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+
+    mail:
+        host: smtp.gmail.com
+        port: 465
+        username: ${EMAIL_USER}
+        password: ${EMAIL_PASSWD}
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    ssl:
+                        enable: true
+                    starttls:
+                        enable: false
+
+    security:
+        user:
+            name: ${ADMIN_USERNAME}
+            password: ${ADMIN_PASSWD}
+
+
+
+server:
+    port: 8200
+    error:
+        include-stacktrace: always
+
+
+logging:
+    level:
+        org:
+        springframework:
+            web: DEBUG
+            security:
+                web: DEBUG
+                oauth2:
+                    provider: DEBUG
+        hibernate: TRACE
+    file:
+        name: app.log
+        append: true
+
+
+dev:
+    name: Ayobami
+    email: ayobamidele006@gmail.com
+
+jwt:
+    secret: ${JWT_SECRET}
+    expiration: ${JWT_EXPIRATION}
